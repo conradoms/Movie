@@ -3,10 +3,8 @@ using Movie.Contexts;
 using Movie.Dtos;
 using Movie.Models;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Movie.Controllers.api
@@ -23,7 +21,7 @@ namespace Movie.Controllers.api
         // GET api/movies
         public IHttpActionResult GetMovies()
         {
-            return Ok(_context.MoviesModel.ToList().Select(Mapper.Map<MovieModel, MovieDto>));
+            return Ok(_context.MoviesModel.Include(m => m.Genre).ToList().Select(Mapper.Map<MovieModel, MovieDto>));
         }
 
         // GET api/movies/1

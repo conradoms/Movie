@@ -8,9 +8,14 @@ namespace Movie.App_Start
     {
         public MappingProfile()
         {
-            Mapper.CreateMap<Customer, CustomerDto>();
-            Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.Id, opt => opt.Ignore());
+            // Model to dto
             Mapper.CreateMap<MovieModel, MovieDto>();
+            Mapper.CreateMap<Customer, CustomerDto>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+            Mapper.CreateMap<Genre, GenreDto>();
+
+            // Dto to model
+            Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.Id, opt => opt.Ignore());
             Mapper.CreateMap<MovieDto, MovieModel>().ForMember(c => c.Id, opt => opt.Ignore());
         }
     }

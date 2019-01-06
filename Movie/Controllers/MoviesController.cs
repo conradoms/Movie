@@ -26,7 +26,7 @@ namespace Movie.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View(_context.MoviesModel.Include(c => c.Genre).ToList());
+            return View();
         }
 
         public ActionResult Details(int id)

@@ -5,6 +5,10 @@
 
 <h2>Customers</h2>
 
+<p>
+    @Html.ActionLink("New Customer", "New", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+
 <table id="customers" class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -19,7 +23,7 @@
 {
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable({
+            var table = $("#customers").DataTable({
                 ajax: {
                     url: "api/customers",
                     dataSrc:""
@@ -32,7 +36,7 @@
                         }
                     },
                     {
-                        data: "name",
+                        data: "membershipType.name"
                     },
                     {
                         data: "id",
@@ -52,7 +56,7 @@
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function () {
-                                button.parents("tr").remove();
+                                table.row(button.parents("tr")).remove().draw();
                             }
                         });
                     }
