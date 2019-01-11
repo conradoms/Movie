@@ -9,5 +9,6 @@ namespace Movie.Contexts
         public DbSet<MovieModel> MoviesModel { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Rental> Rental { get; set; }
     }
 }

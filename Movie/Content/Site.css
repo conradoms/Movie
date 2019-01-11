@@ -34,3 +34,7 @@ textarea {
 .validation-summary-errors{
     color: red;
 }
+
+.tt-container{
+    position: relative;
+}

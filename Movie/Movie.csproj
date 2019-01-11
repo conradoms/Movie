@@ -165,6 +165,9 @@
     <Compile Include="Contexts\MyContext.cs" />
     <Compile Include="Controllers\api\CustomersController.cs" />
     <Compile Include="Controllers\api\MoviesController.cs" />
+    <Compile Include="Controllers\api\RentalController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
+    <Compile Include="Dtos\RentalDto.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -223,6 +226,14 @@
     <Compile Include="Migrations\201812200214246_PopulateMovies.Designer.cs">
       <DependentUpon>201812200214246_PopulateMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901080854585_AddRentalModelClass.cs" />
+    <Compile Include="Migrations\201901080854585_AddRentalModelClass.Designer.cs">
+      <DependentUpon>201901080854585_AddRentalModelClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901080923526_AddingNumberAvailableColumnToMovieModelClass.cs" />
+    <Compile Include="Migrations\201901080923526_AddingNumberAvailableColumnToMovieModelClass.Designer.cs">
+      <DependentUpon>201901080923526_AddingNumberAvailableColumnToMovieModelClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -230,6 +241,7 @@
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Models\RandomModel.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\MovieViewModel.cs" />
@@ -344,10 +356,13 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\TypeAhead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -432,6 +447,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -454,6 +473,7 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
+    <Content Include="Views\Rentals\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -507,6 +527,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812200214246_PopulateMovies.resx">
       <DependentUpon>201812200214246_PopulateMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901080854585_AddRentalModelClass.resx">
+      <DependentUpon>201901080854585_AddRentalModelClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901080923526_AddingNumberAvailableColumnToMovieModelClass.resx">
+      <DependentUpon>201901080923526_AddingNumberAvailableColumnToMovieModelClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
