@@ -10,11 +10,11 @@ using System.Web.Http;
 
 namespace Movie.Controllers.api
 {
-    public class RentalController : ApiController
+    public class RentalsController : ApiController
     {
         public MyContext _context { get; set; }
 
-        public RentalController()
+        public RentalsController()
         {
             _context = new MyContext();
         }

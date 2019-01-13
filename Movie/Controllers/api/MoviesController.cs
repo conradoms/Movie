@@ -19,9 +19,22 @@ namespace Movie.Controllers.api
         }
 
         // GET api/movies
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetMovies(string query = null)
         {
-            return Ok(_context.MoviesModel.Include(m => m.Genre).ToList().Select(Mapper.Map<MovieModel, MovieDto>));
+            var moviesQuery = _context.MoviesModel
+                .Include(m => m.Genre)
+                .Where(x => x.NumberAvailable > 0);
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                moviesQuery = moviesQuery.Where(x => x.Name.Contains(query));
+            }
+
+            var moviesDtos = moviesQuery
+                .ToList()
+                .Select(Mapper.Map<MovieModel, MovieDto>);
+
+            return Ok(moviesQuery);
         }
 
         // GET api/movies/1
